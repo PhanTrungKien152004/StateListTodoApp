@@ -1,27 +1,38 @@
-import { Button, TextField } from "@mui/material";
-import Todo from "./components/Todo";
-import { useState } from "react";
+//import { Button, TextField } from "@mui/material";
+//import todoType from "./components/todoType";
+import { SetStateAction, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
-type Todo = { id: string; name: string };
+import CreateNewTodo from "./components/CreateNewTodo";
+import TodoList from "./components/TodoList";
+export type todoType = { id: string; name: string; isCompleted: boolean };
 function App() {
   // Thuc hanh State
-  const [todoList, setTodoList] = useState<Todo[]>([]);
+  const [todoList, setTodoList] = useState<todoType[]>([]);
   const [newTodo, setNewTodo] = useState("");
   const handleNewTodoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewTodo(e.target.value);
   };
   const handleNewTodoAdd = () => {
-    const newTodoItem: Todo = {
+    const newTodoItem: todoType = {
       id: uuidv4(),
       name: newTodo,
+      isCompleted: false,
     };
-    setTodoList([...todoList, newTodoItem]);
+    setTodoList([newTodoItem, ...todoList]);
+    setNewTodo("");
   };
+
   return (
     <>
-      {/* Bai moi */}
-      <p>This is todo app</p>
-      <div>
+      {/* State ds */}
+      <p>This is todoType app</p>
+      <CreateNewTodo
+        handleNewTodoAdd={handleNewTodoAdd}
+        newTodo={newTodo}
+        handleNewTodoChange={handleNewTodoChange}
+      />
+      <TodoList todoList={todoList} />
+      {/* <div>
         <TextField
           size="small"
           id="outlined-basic"
@@ -37,14 +48,13 @@ function App() {
         >
           Add
         </Button>
-      </div>
+      </div> */}
 
-      <div>
+      {/* <div>
         {todoList.map((todoApp) => {
-          return <Todo name={todoApp.name} />;
+          return <todoType key={todoApp.id} name={todoApp.name} />;
         })}
-      </div>
-      <p>End</p>
+      </div> */}
     </>
   );
 }
