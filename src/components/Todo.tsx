@@ -7,7 +7,7 @@ const Todo = ({ name }: { name: string }) => {
       <Button
         style={{ justifyContent: "space-between" }}
         fullWidth
-        endIcon={<CheckBoxOutlineBlankIcon />}
+        //endIcon={<CheckBoxOutlineBlankIcon />}
       >
         {name}
       </Button>

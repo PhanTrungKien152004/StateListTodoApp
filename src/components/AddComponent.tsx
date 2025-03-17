@@ -1,21 +1,22 @@
 import { Button, TextField } from "@mui/material";
 import React from "react";
-type props = {
+type addType = {
   newTodo: string;
   handleNewTodoAdd: () => void;
   handleNewTodoChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
-const CreateNewTodo = ({
+const CreateNewTodoAdd = ({
   newTodo,
   handleNewTodoAdd,
   handleNewTodoChange,
-}: props) => {
+}: addType) => {
   return (
     <div>
       <TextField
         size="small"
         id="outlined-basic"
         label="Outlined"
+        placeholder="Enter name to add"
         variant="outlined"
         value={newTodo}
         onChange={handleNewTodoChange}
@@ -31,4 +32,4 @@ const CreateNewTodo = ({
   );
 };
 
-export default CreateNewTodo;
+export default CreateNewTodoAdd;
