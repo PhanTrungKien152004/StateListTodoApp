@@ -1,6 +1,6 @@
 //import { Button, TextField } from "@mui/material";
 //import todoType from "./components/todoType";
-import { SetStateAction, useState } from "react";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import TodoList from "./components/TodoList";
 import AddComponent from "./components/AddComponent";
